@@ -1,0 +1,69 @@
+===== SLURM job start: Wed Dec 10 12:59:36 +07 2025 on gpn-node19 =====
+ERROR: Unable to locate a modulefile for 'cuda/12.6'
+ERROR: Unable to locate a modulefile for 'cuda/12.5'
+ERROR: Unable to locate a modulefile for 'cuda/11.8'
+No nvcc in PATH, prepending /usr/local/cuda/bin (fallback)
+nvcc version:
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Tue_Oct_29_23:50:19_PDT_2024
+Cuda compilation tools, release 12.6, V12.6.85
+Build cuda_12.6.r12.6/compiler.35059454_0
+nvidia-smi:
+Wed Dec 10 12:59:36 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.05              Driver Version: 560.35.05      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Quadro RTX 4000                On  |   00000000:01:00.0 Off |                  N/A |
+| 30%   38C    P8             16W /  125W |     183MiB /   8192MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      2217      G   /usr/libexec/Xorg                              94MiB |
+|    0   N/A  N/A      2958      G   /usr/bin/gnome-shell                           86MiB |
++-----------------------------------------------------------------------------------------+
+Compiling lab1.cu -> lab1
+Running binary with N=10000000
+ИССЛЕДОВАНИЕ ТОЧНОСТИ СИНУСА НА Quadro RTX 4000
+CUDA device properties: maxGridDimX=2147483647 maxThreadsPerBlock=1024
+========================================
+
+Запуск вычислений на GPU...
+
+РЕЗУЛЬТАТЫ ДЛЯ 10000000 ЭЛЕМЕНТОВ:
+========================================
+ФУНКЦИЯ      | ВРЕМЯ (ms) | ОШИБКА
+-------------|------------|-----------------
+float sinf   |  0.224352  | 4.833566e-08
+float __sinf |   0.188192 | 1.409962e-07
+double sin   |   3.013312 | 9.268165e-17
+float table  |   0.615104 | 1.198679e-08
+
+ПРОВЕРКА КОРРЕКТНОСТИ:
+Первые 5 значений float sinf: 0.000000e+00 1.745241e-02 3.489950e-02 5.233596e-02 6.975647e-02 
+Первые 5 значений float table: 0.000000e+00 1.745241e-02 3.489950e-02 5.233596e-02 6.975647e-02 
+
+GPU вычисления работают: ДА
+
+СРАВНЕНИЕ С CPU (первые 3 значения):
+i	GPU sinf	CPU		Разница
+0	0.000000e+00	0.000000e+00	0.000000e+00
+1	1.745241e-02	1.745241e-02	0.000000e+00
+2	3.489950e-02	3.489950e-02	0.000000e+00
+
+ВЫВОДЫ:
+- sinf: баланс скорости и точности
+- __sinf: быстрее, но менее точен
+- double: максимальная точность, но медленнее
+- lookup-table: минимизирует вычисления sin и даёт стабильную точность
+
+===== SLURM job end: Wed Dec 10 12:59:38 +07 2025 =====
