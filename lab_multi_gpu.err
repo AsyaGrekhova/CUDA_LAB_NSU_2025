@@ -1,0 +1,18 @@
+stb_image.h(4276): warning #550-D: variable "old_limit" was set but never used
+     unsigned int cur, limit, old_limit;
+                              ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+stb_image.h(5185): warning #550-D: variable "idata_limit_old" was set but never used
+                 stbi__uint32 idata_limit_old = idata_limit;
+                              ^
+
+stb_image.h(6972): warning #550-D: variable "out_size" was set but never used
+        int out_size = 0;
+            ^
+
+stb_image.h(6973): warning #550-D: variable "delays_size" was set but never used
+        int delays_size = 0;
+            ^
+
