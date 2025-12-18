@@ -1,0 +1,46 @@
+===== SLURM job start =====
+Date: Thu Dec 18 09:40:32 +07 2025
+Node: gpuserv
+JobID: 111820
+Cores: 4
+nvcc version:
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Tue_Oct_29_23:50:19_PDT_2024
+Cuda compilation tools, release 12.6, V12.6.85
+Build cuda_12.6.r12.6/compiler.35059454_0
+nvidia-smi:
+Thu Dec 18 09:40:32 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.05              Driver Version: 560.35.05      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:61:00.0 Off |                    0 |
+| N/A   35C    P0             26W /  250W |     253MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100-PCIE-16GB           On  |   00000000:DB:00.0 Off |                    0 |
+| N/A   35C    P0             25W /  250W |       5MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      6802      G   /usr/libexec/Xorg                             108MiB |
+|    0   N/A  N/A      7378      G   /usr/bin/gnome-shell                          143MiB |
+|    1   N/A  N/A      6802      G   /usr/libexec/Xorg                               4MiB |
++-----------------------------------------------------------------------------------------+
+Compiling...
+Running...
+Arows = 1008
+Acols = 2000
+Brows = 2000
+Bcols = 1504
+Kernel Time (shared memory): 155.008 ms
+===== SLURM job end =====
